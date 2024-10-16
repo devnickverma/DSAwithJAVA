@@ -13,7 +13,7 @@ public class bubbleSort{
                 swap++;
             }
           }
-          if(swap==0){
+          if(swap==0){ // to check if array is sorted or not
             break;
           }
         }
