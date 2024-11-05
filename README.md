@@ -19,8 +19,6 @@ This technique is used to find subarrays with a specific sum, maximum sum, or ot
 
 **Code:**
 ```java
-
-```markdown
 int maxSum(int[] arr, int k) {
     int windowSum = 0;
     int maxSum = Integer.MIN_VALUE;
