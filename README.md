@@ -1,4 +1,3 @@
-
 <h1>Java Array Tricks for DSA</h1>
 
 ## Tricks/algorithms
@@ -20,17 +19,19 @@ This technique is used to find subarrays with a specific sum, maximum sum, or ot
 **Code:**
 ```java
 int maxSum(int[] arr, int k) {
-    int windowSum = 0;
-    int maxSum = Integer.MIN_VALUE;
+    int windowSum = 0; // Holds the sum of the current window
+    int maxSum = Integer.MIN_VALUE; // Stores the maximum sum found
 
+    // Initialize the first window
     for (int i = 0; i < k; i++) {
         windowSum += arr[i];
     }
     maxSum = windowSum;
 
+    // Slide the window over the array
     for (int i = k; i < arr.length; i++) {
-        windowSum += arr[i] - arr[i - k];
-        maxSum = Math.max(maxSum, windowSum);
+        windowSum += arr[i] - arr[i - k]; // Add next element, remove the element that slides out
+        maxSum = Math.max(maxSum, windowSum); // Update maxSum if we found a new maximum
     }
     return maxSum;
 }
@@ -58,13 +59,14 @@ This technique is effective for finding pairs or triplets with a given sum or fo
 **Code:**
 ```java
 boolean hasPairWithSum(int[] arr, int sum) {
-    int left = 0, right = arr.length - 1;
+    int left = 0, right = arr.length - 1; // Initialize two pointers
 
+    // Traverse until the pointers meet
     while (left < right) {
         int currentSum = arr[left] + arr[right];
-        if (currentSum == sum) return true;
-        else if (currentSum < sum) left++;
-        else right--;
+        if (currentSum == sum) return true; // Pair found
+        else if (currentSum < sum) left++; // Increase left pointer if sum is too small
+        else right--; // Decrease right pointer if sum is too large
     }
     return false;
 }
@@ -92,12 +94,13 @@ Kadane’s Algorithm is used to find the maximum sum of a contiguous subarray in
 **Code:**
 ```java
 int maxSubArraySum(int[] arr) {
-    int maxSoFar = arr[0];
-    int maxEndingHere = arr[0];
+    int maxSoFar = arr[0]; // Stores the maximum sum found so far
+    int maxEndingHere = arr[0]; // Stores the maximum sum of subarrays ending at current position
 
+    // Traverse the array
     for (int i = 1; i < arr.length; i++) {
-        maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
-        maxSoFar = Math.max(maxSoFar, maxEndingHere);
+        maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]); // Extend or start a new subarray
+        maxSoFar = Math.max(maxSoFar, maxEndingHere); // Update maxSoFar if new maximum found
     }
     return maxSoFar;
 }
@@ -124,11 +127,13 @@ The Boyer-Moore Voting Algorithm efficiently finds an element that appears more 
 **Code:**
 ```java
 int majorityElement(int[] arr) {
-    int candidate = arr[0], count = 1;
+    int candidate = arr[0]; // Initialize candidate for majority element
+    int count = 1; // Counter for candidate frequency
 
+    // Phase 1: Find a candidate
     for (int i = 1; i < arr.length; i++) {
-        if (arr[i] == candidate) count++;
-        else if (--count == 0) {
+        if (arr[i] == candidate) count++; // Increment if same as candidate
+        else if (--count == 0) { // Decrement if different, reset if count reaches zero
             candidate = arr[i];
             count = 1;
         }
@@ -159,18 +164,19 @@ The prefix sum technique allows efficient calculation of the sum of elements wit
 ```java
 int[] prefixSum(int[] arr) {
     int[] prefix = new int[arr.length];
-    prefix[0] = arr[0];
+    prefix[0] = arr[0]; // Initialize first element of prefix array
 
+    // Build prefix array
     for (int i = 1; i < arr.length; i++) {
-        prefix[i] = prefix[i - 1] + arr[i];
+        prefix[i] = prefix[i - 1] + arr[i]; // Each element is sum of all elements up to it
     }
     return prefix;
 }
 
 // Query function
 int rangeSum(int[] prefix, int L, int R) {
-    if (L == 0) return prefix[R];
-    return prefix[R] - prefix[L - 1];
+    if (L == 0) return prefix[R]; // Sum from start if L is 0
+    return prefix[R] - prefix[L - 1]; // Subtract prefix sum before L
 }
 ```
 
@@ -188,4 +194,7 @@ int L = 1, R = 3;
 
 ---
 
-This list of tricks will help you in solving array-based problems more efficient.
+These tricks will help you solve common array-based problems more efficiently.
+```
+
+Each code block now includes comments to explain each line or major step within the code, making it easier to understand and follow.
