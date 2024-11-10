@@ -5,8 +5,7 @@ public class LonelyNumbersinArrayList {
 		Collections.sort(nums);
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i=1; i < nums.size()-1; i++) {
-			if (nums.get(i-1) + 1 < nums.get(i) && nums.get(i) + 1 < nums.get(i+1))
-			{
+			if (nums.get(i-1) + 1 < nums.get(i) && nums.get(i) + 1 < nums.get(i+1)){
 				list.add(nums.get(i));
 			}
 		}
