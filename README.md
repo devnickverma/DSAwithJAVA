@@ -195,6 +195,3 @@ int L = 1, R = 3;
 ---
 
 These tricks will help you solve common array-based problems more efficiently.
-```
-
-Each code block now includes comments to explain each line or major step within the code, making it easier to understand and follow.
