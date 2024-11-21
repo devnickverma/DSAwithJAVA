@@ -360,22 +360,55 @@ public class LinkedList {
         return merge(leftSorted, rightSorted);
     }
 
+    public void zigZag() {
+        // Find middle node
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node mid = slow;
+
+        // Reverse second half
+        Node curr = mid.next;
+        mid.next = null; // Disconnect the second half
+        Node prev = null;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node left = head; // Left half head
+        Node right = prev; // Right half head after reverse
+        Node nextLeft, nextRight;
+
+        //  Alternate/zig-zag merge
+        while (left != null && right != null) {
+            nextLeft = left.next;
+            left.next = right;
+            nextRight = right.next;
+            right.next = nextLeft;
+            
+            // update
+            left = nextLeft;
+            right = nextRight;
+        }
+    }
 
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-        ll.addFirst(1); 
-        ll.addFirst(2);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(5);
-
-        System.out.println("Original Linked List:");
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.addLast(6);
+        
         ll.print();
-
-        // Update the head with the sorted list
-        ll.head = mergeSort(ll.head);
-
-        System.out.println("\nSorted Linked List:");
+        ll.zigZag();
         ll.print();
     }
 
