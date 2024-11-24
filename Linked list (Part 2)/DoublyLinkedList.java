@@ -59,6 +59,20 @@ public class DoublyLinkedList{
         return val;
     }
 
+    public void reverse(){
+        Node curr = head;
+        Node prev = null;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            curr.prev = next;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     // Remove last  
     public int removeLast(){
         if(size == 0){
@@ -80,7 +94,7 @@ public class DoublyLinkedList{
     public static void print(Node head){
         Node temp = head;
         while(temp != null){
-            System.out.print(temp.data + " -> ");
+            System.out.print(temp.data + " <-> ");
             temp = temp.next;
         }
         System.out.println("null");
@@ -95,8 +109,7 @@ public class DoublyLinkedList{
         dll.addLast(40);
 
         dll.print(head);
-
-        System.out.println(dll.removeFirst());
-        System.out.println(dll.removeFirst());
+        dll.reverse();
+        dll.print(head);
     }
 }
