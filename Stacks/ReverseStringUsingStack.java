@@ -16,7 +16,7 @@ public class ReverseStringUsingStack{
              return sb.toString();
     }
     public static void main(String args[]){
-        String str = "12345";
+        String str = "Hello World";
         String revstr = reverseString(str);
         System.out.println(revstr);  
     }
