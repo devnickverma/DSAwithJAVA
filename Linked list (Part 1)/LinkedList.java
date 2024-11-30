@@ -230,6 +230,7 @@ public class LinkedList {
             return true; // A single node or empty list is a palindrome
         }
 
+
         // Step 1: Find the middle of the list
         Node midNode = findMid(head);
 
