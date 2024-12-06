@@ -20,7 +20,7 @@ public class MaxAreaInHistogram{
         }
 
         // Next greater element to the left
-         s = new Stack<>();
+        s = new Stack<>();
         for(int i = 0; i < arr.length; i++){
             while(!s.isEmpty() && arr[s.peek()] >= arr[i]){
                 s.pop();
