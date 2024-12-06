@@ -22,7 +22,7 @@ public class DuplicateParenthese{
         return s.isEmpty();
     }
     public static void main(String args[]){
-        String str = "()[]{}";
+        String str = "()[]";
         System.out.println("Parentheses are valid : " + isValid(str));
     }
 }
