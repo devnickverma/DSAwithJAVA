@@ -1,3 +1,4 @@
+
 <h1>Java Array Tricks for DSA</h1>
 
 ## Tricks/algorithms
